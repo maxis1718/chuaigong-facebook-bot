@@ -293,7 +293,7 @@ function gulis(recipientId, query) {
             text: query
         }
     }, function (error, response, body) {
-console.log(error, response, body);
+console.log(body);
         var messageData = {
             recipient: {
               id: recipientId
