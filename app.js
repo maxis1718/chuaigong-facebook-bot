@@ -221,6 +221,10 @@ function receivedMessage(event) {
         sendReceiptMessage(senderID);
         break;
 
+      case 'gulis':
+        gulis(senderID, messageText);
+        break;
+
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -280,6 +284,32 @@ function receivedPostback(event) {
   sendTextMessage(senderID, "Postback called");
 }
 
+//var request = require('request');
+function gulis(recipientId, query) {
+    var uri = 'http://hack.wjhuang.net:6174/beauty';
+    request.post(uri, {
+        form: {
+            user_name: 'facebookbot',
+            text: query
+        }
+    }, function (error, response, body) {
+console.log(error, response, body);
+        var messageData = {
+            recipient: {
+              id: recipientId
+            },
+            message: {
+              attachment: {
+                type: "image",
+                payload: {
+                  url: 'http://i.imgur.com/NAbAymj.jpg'
+                }
+              }
+            }
+        };
+        callSendAPI(messageData);
+    });
+}
 
 /*
  * Send a message with an using the Send API.
