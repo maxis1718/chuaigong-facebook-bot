@@ -45,6 +45,9 @@ const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
   (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
   config.get('pageAccessToken');
 
+console.log(VALIDATION_TOKEN);
+console.log(APP_SECRET);
+console.log(PAGE_ACCESS_TOKEN);
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN)) {
   console.error("Missing config values");
   process.exit(1);
