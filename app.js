@@ -45,10 +45,7 @@ const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
   (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
   config.get('pageAccessToken');
 
-console.log(VALIDATION_TOKEN);
-console.log(APP_SECRET);
-console.log(PAGE_ACCESS_TOKEN);
-if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN)) {
+if (!(VALIDATION_TOKEN && PAGE_ACCESS_TOKEN)) {
   console.error("Missing config values");
   process.exit(1);
 }
@@ -59,6 +56,32 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN)) {
  *
  */
 app.get('/webhook', function(req, res) {
+
+    var data = req.body;
+    if (data.object == 'page') {
+        data.entry.forEach(function(pageEntry) {
+          var pageID = pageEntry.id;
+          var timeOfEvent = pageEntry.time;
+
+          // Iterate over each messaging event
+          pageEntry.messaging.forEach(function(messagingEvent) {
+            if (messagingEvent.optin) {
+              receivedAuthentication(messagingEvent);
+            } else if (messagingEvent.message) {
+              receivedMessage(messagingEvent);
+            } else if (messagingEvent.delivery) {
+              receivedDeliveryConfirmation(messagingEvent);
+            } else if (messagingEvent.postback) {
+              receivedPostback(messagingEvent);
+            } else {
+              console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+            }
+          });
+        });
+    }
+    res.sendStatus(200);
+
+/*
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === VALIDATION_TOKEN) {
     console.log("Validating webhook");
@@ -66,7 +89,8 @@ app.get('/webhook', function(req, res) {
   } else {
     console.error("Failed validation. Make sure the validation tokens match.");
     res.sendStatus(403);          
-  }  
+  }
+*/  
 });
 
 
