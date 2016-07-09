@@ -188,6 +188,8 @@ function receivedAuthentication(event) {
  */
 function receivedMessage(event) {
 
+console.log('=====================================================================');
+
 console.log('>>> receivedMessage');
 
   var senderID = event.sender.id;
@@ -198,6 +200,8 @@ console.log('>>> receivedMessage');
   console.log("Received message for user %d and page %d at %d with message:", 
     senderID, recipientID, timeOfMessage);
   // console.log(JSON.stringify(message));
+
+console.log('>>>>>> before switch');
 
   var messageId = message.mid;
 
@@ -229,6 +233,7 @@ console.log('>>> receivedMessage');
         break;
 
       default:
+        console.log('>>>>>>>>> before gulis');
         gulis(senderID, messageText);
         // sendTextMessage(senderID, messageText);
     }
