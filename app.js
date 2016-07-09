@@ -299,11 +299,14 @@ function gulis(recipientId, messageText) {
         }
     }, function (error, response, body) {
 
+console.log('>>> messageText:', messageText);
 console.log('>>> body:', body);
 
         if (body.text) {
           res = body.text.split('\n');
         }
+
+console.log('>>> res:', res);
 
         messageData = {
             recipient: {
