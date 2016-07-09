@@ -302,6 +302,9 @@ function gulis(recipientId, messageText) {
 console.log('>>> messageText:', messageText);
 console.log('>>> body:', body);
 
+console.log('>>> body.text:', body.text);
+console.log('>>> body[text]', body['text']);
+
         if (body.text) {
 console.log('>>> body.text:', body.text);
           res = body.text.split('\n');
