@@ -298,7 +298,7 @@ function receivedPostback(event) {
 }
 
 //var request = require('request');
-function gulis(recipientId, messageText) {;ll;a
+function gulis(recipientId, messageText) {
     var uri = 'http://hack.wjhuang.net:6174/beauty';
     var messageData = '';
     var res;
