@@ -191,7 +191,7 @@ function receivedMessage(event) {
 
   console.log("Received message for user %d and page %d at %d with message:", 
     senderID, recipientID, timeOfMessage);
-  console.log(JSON.stringify(message));
+  // console.log(JSON.stringify(message));
 
   var messageId = message.mid;
 
@@ -303,6 +303,7 @@ console.log('>>> messageText:', messageText);
 console.log('>>> body:', body);
 
         if (body.text) {
+console.log('>>> body.text:', body.text);
           res = body.text.split('\n');
         }
 
