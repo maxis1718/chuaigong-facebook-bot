@@ -334,8 +334,8 @@ console.log('>>> res:', res);
               title: "讚"
             }, {
               type: "postback",
-              title: "Call Postback",
-              payload: "WTF",
+              title: "WTF",
+              payload: "Developer defined postback",
             }],
           }]
         }
