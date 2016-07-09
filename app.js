@@ -204,6 +204,7 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
+
     switch (messageText) {
       case 'image':
         sendImageMessage(senderID);
@@ -221,13 +222,15 @@ function receivedMessage(event) {
         sendReceiptMessage(senderID);
         break;
 
-      case 'gulis':
-        gulis(senderID, messageText);
-        break;
+      // case 'text':
+      //   gulis(senderID, messageText);
+      //   break;
 
       default:
-        sendTextMessage(senderID, messageText);
+        gulis(senderID, messageText);
+        // sendTextMessage(senderID, messageText);
     }
+
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
