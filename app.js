@@ -285,16 +285,20 @@ function receivedPostback(event) {
 }
 
 //var request = require('request');
-function gulis(recipientId, query) {
+function gulis(recipientId, messageText) {
     var uri = 'http://hack.wjhuang.net:6174/beauty';
+    var messageData = '';
     request.post(uri, {
         form: {
-            user_name: 'facebookbot',
-            text: query
+            user_name: 'fbbot',
+            text: messageText
         }
     }, function (error, response, body) {
-console.log(body);
-        var messageData = {
+
+console.log('>>> error:', error);
+console.log('>>> body:', body);
+
+        messageData = {
             recipient: {
               id: recipientId
             },
