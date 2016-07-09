@@ -295,7 +295,7 @@ function gulis(recipientId, messageText) {
     request.post(uri, {
         form: {
             user_name: 'fbbot',
-            text: encodeURIComponent(messageText)
+            text: messageText
         }
     }, function (error, response, body) {
 
