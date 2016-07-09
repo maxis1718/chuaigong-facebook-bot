@@ -76,11 +76,16 @@ app.get('/webhook', function(req, res) {
  */
 app.post('/webhook', function (req, res) {
 
+console.log('=====================================================================');
+
 console.log('>>> app.post');
 
   var data = req.body;
 
   // Make sure this is a page subscription
+
+console.log('>>> data.object:', data.object);
+
   if (data.object == 'page') {
     // Iterate over each entry
     // There may be multiple if batched
@@ -188,8 +193,6 @@ function receivedAuthentication(event) {
  */
 function receivedMessage(event) {
 
-console.log('=====================================================================');
-
 console.log('>>> receivedMessage');
 
   var senderID = event.sender.id;
@@ -295,7 +298,7 @@ function receivedPostback(event) {
 }
 
 //var request = require('request');
-function gulis(recipientId, messageText) {
+function gulis(recipientId, messageText) {;ll;a
     var uri = 'http://hack.wjhuang.net:6174/beauty';
     var messageData = '';
     var res;
