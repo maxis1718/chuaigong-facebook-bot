@@ -300,7 +300,7 @@ console.log('>>> messageText:', messageText);
             user_name: 'fbbot',
             text: messageText
         }
-    }, function (error, response, beautyBody) {
+    }, function (error, response, body) {
 
         var beautyBody = JSON.parse(body);
 
