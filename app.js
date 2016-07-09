@@ -288,6 +288,7 @@ function receivedPostback(event) {
 function gulis(recipientId, messageText) {
     var uri = 'http://hack.wjhuang.net:6174/beauty';
     var messageData = '';
+    var res;
     request.post(uri, {
         form: {
             user_name: 'fbbot',
@@ -295,8 +296,11 @@ function gulis(recipientId, messageText) {
         }
     }, function (error, response, body) {
 
-console.log('>>> error:', error);
 console.log('>>> body:', body);
+
+        if (body.text) {
+          res = body.text.split('\n');
+        }
 
         messageData = {
             recipient: {
@@ -306,7 +310,7 @@ console.log('>>> body:', body);
               attachment: {
                 type: "image",
                 payload: {
-                  url: 'http://i.imgur.com/NAbAymj.jpg'
+                  url: res && res[1] || 'http://i.imgur.com/NAbAymj.jpg'
                 }
               }
             }
