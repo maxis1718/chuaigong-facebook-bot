@@ -292,24 +292,22 @@ function gulis(recipientId, messageText) {
     var uri = 'http://hack.wjhuang.net:6174/beauty';
     var messageData = '';
     var res;
+
+console.log('>>> messageText:', messageText);
+
     request.post(uri, {
         form: {
             user_name: 'fbbot',
             text: messageText
         }
-    }, function (error, response, body) {
+    }, function (error, response, beautyBody) {
 
-console.log('>>> messageText:', messageText);
-console.log('>>> body.text:', body.text);
-console.log('>>> body:', body);
+console.log('>>> beautyBody:', beautyBody);
+console.log('>>> beautyBody.text:', beautyBody.text);
 
-// console.log('>>> body.hasOwnProperty', body.hasOwnProperty('text'));
-// console.log('>>> body.text:', body.text);
-// console.log('>>> body[text]', body['text']);
-
-        if (body.text) {
-console.log('>>> body.text:', body.text);
-          res = body.text.split('\n');
+        if (beautyBody.text) {
+console.log('>>> beautyBody.text:', beautyBody.text);
+          res = beautyBody.text.split('\n');
         }
 
 console.log('>>> res:', res);
