@@ -295,7 +295,7 @@ function gulis(recipientId, messageText) {
     request.post(uri, {
         form: {
             user_name: 'fbbot',
-            text: messageText
+            text: encodeURIComponent(messageText)
         }
     }, function (error, response, body) {
 
@@ -533,6 +533,7 @@ function callSendAPI(messageData) {
 
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
+
       var recipientId = body.recipient_id;
       var messageId = body.message_id;
 
@@ -540,8 +541,8 @@ function callSendAPI(messageData) {
         messageId, recipientId);
     } else {
       console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
+      // console.error(response);
+      // console.error(error);
     }
   });  
 }
