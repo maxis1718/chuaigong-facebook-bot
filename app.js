@@ -302,7 +302,8 @@ console.log('>>> messageText:', messageText);
         }
     }, function (error, response, beautyBody) {
 
-console.log('>>> beautyBody:', beautyBody);
+        var beautyBody = JSON.parse(body);
+
 console.log('>>> beautyBody.text:', beautyBody.text);
 
         if (beautyBody.text) {
