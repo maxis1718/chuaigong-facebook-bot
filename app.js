@@ -300,7 +300,8 @@ function gulis(recipientId, messageText) {
     }, function (error, response, body) {
 
 console.log('>>> messageText:', messageText);
-console.log('>>> body:', body.text);
+console.log('>>> body.text:', body.text);
+console.log('>>> body:', body);
 
 // console.log('>>> body.hasOwnProperty', body.hasOwnProperty('text'));
 // console.log('>>> body.text:', body.text);
