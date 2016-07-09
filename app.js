@@ -126,6 +126,7 @@ app.post('/webhook', function (req, res) {
  *
  */
 function verifyRequestSignature(req, res, buf) {
+console.log('>>> verifyRequestSignature');
   var signature = req.headers["x-hub-signature"];
 
   if (!signature) {
@@ -156,6 +157,7 @@ function verifyRequestSignature(req, res, buf) {
  *
  */
 function receivedAuthentication(event) {
+console.log('>>> receivedAuthentication');
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfAuth = event.timestamp;
@@ -247,6 +249,7 @@ function receivedAuthentication(event) {
 // }
 
 function receivedMessage(event) {
+console.log('>>> receivedMessage');
   var message = event.message;
   var senderID = event.sender.id;
   var messageText = message.text;
@@ -264,6 +267,7 @@ function receivedMessage(event) {
  *
  */
 function receivedDeliveryConfirmation(event) {
+console.log('>>> receivedDeliveryConfirmation');
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var delivery = event.delivery;
@@ -290,6 +294,7 @@ function receivedDeliveryConfirmation(event) {
  * 
  */
 function receivedPostback(event) {
+console.log('>>> receivedPostback');
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostback = event.timestamp;
