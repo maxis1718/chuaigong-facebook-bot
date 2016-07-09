@@ -314,7 +314,7 @@ console.log('>>> messageText:', messageText);
 
         var beautyBody = JSON.parse(body);
 
-console.log('>>> beautyBody.text:', beautyBody.text);
+console.log('>>> beautyBody:', beautyBody);
 
         if (beautyBody.text) {
           res = beautyBody.text.split('\n');
