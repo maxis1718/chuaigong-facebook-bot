@@ -228,10 +228,6 @@ console.log('>>> receivedMessage');
         sendReceiptMessage(senderID);
         break;
 
-      // case 'text':
-      //   gulis(senderID, messageText);
-      //   break;
-
       default:
         gulis(senderID, messageText);
         // sendTextMessage(senderID, messageText);
@@ -313,55 +309,38 @@ console.log('>>> messageText:', messageText);
 console.log('>>> beautyBody.text:', beautyBody.text);
 
         if (beautyBody.text) {
-console.log('>>> beautyBody.text:', beautyBody.text);
           res = beautyBody.text.split('\n');
         }
 
-console.log('>>> res:', res);
-
-  messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [
-          {
-            title: res && res[0] || '(推: 51) [正妹] 不太透明 系6',
-            subtitle: "最專業的程序員鼓勵師",
-            item_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
-            image_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
-            buttons: [{
-              type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
-              title: "讚"
-            }, {
-              type: "postback",
-              title: "WTF",
-              payload: "Developer defined postback",
-            }],
-          }]
-        }
-      }
-    }
-  };
-
-        // messageData = {
-        //     recipient: {
-        //       id: recipientId
-        //     },
-        //     message: {
-        //       attachment: {
-        //         type: "image",
-        //         payload: {
-        //           url: res && res[1] || 'http://i.imgur.com/NAbAymj.jpg'
-        //         }
-        //       }
-        //     }
-        // };
+        messageData = {
+          recipient: {
+            id: recipientId
+          },
+          message: {
+            attachment: {
+              type: "template",
+              payload: {
+                template_type: "generic",
+                elements: [
+                {
+                  title: res && res[0] || '(推: 51) [正妹] 不太透明 系6',
+                  subtitle: "最專業的程序員鼓勵師",
+                  item_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
+                  image_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
+                  buttons: [{
+                    type: "web_url",
+                    url: "https://www.oculus.com/en-us/rift/",
+                    title: "讚"
+                  }, {
+                    type: "postback",
+                    title: "WTF",
+                    payload: "Developer defined postback",
+                  }],
+                }]
+              }
+            }
+          }
+        };
         callSendAPI(messageData);
     });
 }
