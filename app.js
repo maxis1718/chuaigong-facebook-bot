@@ -300,7 +300,7 @@ console.log('>>> recipientId:', recipientId);
                   image_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
                   buttons: [{
                     type: "postback",
-                    title: "讚",
+                    title: "推",
                     payload: "like"
                   }, {
                     type: "postback",
