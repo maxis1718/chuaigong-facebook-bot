@@ -287,7 +287,6 @@ console.log('>>> receivedDeliveryConfirmation');
  * 
  */
 function receivedPostback(event) {
-console.log('>>> receivedPostback');
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostback = event.timestamp;
@@ -301,7 +300,7 @@ console.log('>>> receivedPostback');
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+  sendTextMessage(senderID, "我們聽到你的心聲了");
 }
 
 //var request = require('request');
