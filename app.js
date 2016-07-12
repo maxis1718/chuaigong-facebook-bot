@@ -150,7 +150,6 @@ console.log('>>> verifyRequestSignature');
  *
  */
 function receivedAuthentication(event) {
-console.log('>>> receivedAuthentication');
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfAuth = event.timestamp;
@@ -242,9 +241,9 @@ console.log('>>> receivedAuthentication');
 // }
 
 function receivedMessage(event) {
-console.log('>>> receivedMessage');
   var message = event.message;
   var senderID = event.sender.id;
+console.log('>>> sender:', event.sender);
   var messageText = message.text;
   if (messageText) {
     gulis(senderID, messageText);
