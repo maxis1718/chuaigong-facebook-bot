@@ -300,7 +300,14 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "我們聽到你的心聲了");
+  var msg = '我們聽到你的心聲了';
+  if (payload === 'wtf') {
+    msg = '阿不就好棒棒';
+  }
+  else if (payload === 'like') {
+    msg = '原來你喜歡這味的';
+  }
+  sendTextMessage(senderID, msg);
 }
 
 //var request = require('request');
@@ -342,11 +349,11 @@ function gulis(recipientId, messageText) {
                   buttons: [{
                     type: "postback",
                     title: "讚",
-                    payload: "Developer defined postback"
+                    payload: "like"
                   }, {
                     type: "postback",
                     title: "WTF",
-                    payload: "Developer defined postback",
+                    payload: "wtf",
                   }],
                 }]
               }
