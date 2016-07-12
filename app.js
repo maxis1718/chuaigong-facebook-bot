@@ -185,65 +185,13 @@ function receivedAuthentication(event) {
  * then we'll simply confirm that we've received the attachment.
  * 
  */
-// function receivedMessage(event) {
-
-// console.log('>>> receivedMessage');
-
-//   var senderID = event.sender.id;
-//   var recipientID = event.recipient.id;
-//   var timeOfMessage = event.timestamp;
-//   var message = event.message;
-
-//   console.log("Received message for user %d and page %d at %d with message:", 
-//     senderID, recipientID, timeOfMessage);
-//   // console.log(JSON.stringify(message));
-
-// console.log('>>>>>> before switch');
-
-//   var messageId = message.mid;
-
-//   // You may get a text or attachment but not both
-//   var messageText = message.text;
-//   var messageAttachments = message.attachments;
-
-//   if (messageText) {
-
-//     // If we receive a text message, check to see if it matches any special
-//     // keywords and send back the corresponding example. Otherwise, just echo
-//     // the text we received.
-
-//     switch (messageText) {
-//       case 'image':
-//         sendImageMessage(senderID);
-//         break;
-
-//       case 'button':
-//         sendButtonMessage(senderID);
-//         break;
-
-//       case 'generic':
-//         sendGenericMessage(senderID);
-//         break;
-
-//       case 'receipt':
-//         sendReceiptMessage(senderID);
-//         break;
-
-//       default:
-//         console.log('>>>>>>>>> before gulis');
-//         gulis(senderID, messageText);
-//         // sendTextMessage(senderID, messageText);
-//     }
-
-//   } else if (messageAttachments) {
-//     sendTextMessage(senderID, "Message with attachment received");
-//   }
-// }
-
 function receivedMessage(event) {
-  var message = event.message;
+
   var senderID = event.sender.id;
-console.log('>>> sender:', event.sender);
+  var recipientID = event.recipient.id;
+  var timeOfMessage = event.timestamp;
+  var message = event.message;
+
   var messageText = message.text;
   if (messageText) {
     gulis(senderID, messageText);
@@ -259,7 +207,6 @@ console.log('>>> sender:', event.sender);
  *
  */
 function receivedDeliveryConfirmation(event) {
-console.log('>>> receivedDeliveryConfirmation');
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var delivery = event.delivery;
@@ -306,30 +253,37 @@ function receivedPostback(event) {
   else if (payload === 'like') {
     msg = '原來你喜歡這味的';
   }
+
+  // TODO: ajax update user preference
+  // ...
+
   sendTextMessage(senderID, msg);
 }
 
-//var request = require('request');
 function gulis(recipientId, messageText) {
+
+console.log('>>> recipientId:', recipientId);
+
+    // slack monkey Beauty API
     var uri = 'http://hack.wjhuang.net:6174/beauty';
     var messageData = '';
     var res;
 
-// console.log('>>> messageText:', messageText);
-
     request.post(uri, {
         form: {
             user_name: 'fbbot',
-            text: messageText
+            text: messageText,
+            platform: 'facebook'
         }
     }, function (error, response, body) {
 
+        // extract response
         var beautyBody = JSON.parse(body);
-
         if (beautyBody.text) {
           res = beautyBody.text.split('\n');
         }
 
+        // prepare message
         messageData = {
           recipient: {
             id: recipientId
