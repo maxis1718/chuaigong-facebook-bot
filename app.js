@@ -76,16 +76,9 @@ app.get('/webhook', function(req, res) {
  */
 app.post('/webhook', function (req, res) {
 
-// console.log('=====================================================================');
-
-// console.log('>>> app.post');
-
   var data = req.body;
 
   // Make sure this is a page subscription
-
-// console.log('>>> data.object:', data.object);
-
   if (data.object == 'page') {
     // Iterate over each entry
     // There may be multiple if batched
@@ -328,8 +321,6 @@ function gulis(recipientId, messageText) {
 
         var beautyBody = JSON.parse(body);
 
-// console.log('>>> beautyBody.text:', beautyBody);
-
         if (beautyBody.text) {
           res = beautyBody.text.split('\n');
         }
@@ -350,9 +341,9 @@ function gulis(recipientId, messageText) {
                   item_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
                   image_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
                   buttons: [{
-                    type: "web_url",
-                    url: "https://www.oculus.com/en-us/rift/",
-                    title: "讚"
+                    type: "postback",
+                    title: "讚",
+                    payload: "Developer defined postback"
                   }, {
                     type: "postback",
                     title: "WTF",
