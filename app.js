@@ -19,6 +19,7 @@ const
   request = require('request');
 
 var app = express();
+var msgs = ['大聲講話啊', '一起踹共啊', '快點打字啊'];
 
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
@@ -252,16 +253,19 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  var msg = '我們聽到你的心聲了';
+  var msg = msgs[Math.floor(Math.random() * msgs.length)];
+/*
   if (payload === 'wtf') {
     msg = '阿不就好棒棒';
   }
   else if (payload === 'like') {
     msg = '原來你喜歡這味的';
   }
-
+*/
   // TODO: ajax update user preference
   // ...
+
+
 
   sendTextMessage(senderID, msg);
 }
