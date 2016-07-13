@@ -289,17 +289,7 @@ function gulis(recipientId, message, messageType) {
           res = beautyBody.text.split('\n');
         }
 
-        // prepare message
-        messageData = {
-          recipient: {
-            id: recipientId
-          },
-          message: {
-            text: res
-          }
-        };
-
-        callSendAPI(messageData);
+        sendTextMessage(recipientId, res);
     });
 }
 
