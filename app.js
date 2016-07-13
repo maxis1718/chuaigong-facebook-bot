@@ -295,30 +295,10 @@ function gulis(recipientId, message, messageType) {
             id: recipientId
           },
           message: {
-            attachment: {
-              type: "template",
-              payload: {
-                template_type: "generic",
-                elements: [
-                {
-                  title: res && res[0] || '(推: 51) [正妹] 不太透明 系6',
-                  subtitle: "最專業的程序員鼓勵師",
-                  item_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
-                  image_url: res && res[1] || "http://i.imgur.com/37LoJka.jpg",
-                  buttons: [{
-                    type: "postback",
-                    title: "推",
-                    payload: "like"
-                  }, {
-                    type: "postback",
-                    title: "WTF",
-                    payload: "wtf",
-                  }],
-                }]
-              }
-            }
+            text: res
           }
         };
+
         callSendAPI(messageData);
     });
 }
