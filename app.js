@@ -331,8 +331,8 @@ console.log('>>>>>> send!!!!');
             }
         }, function (error, response, body) {
             // do nothing
-        }   
-    });
+        });
+    };
 }
 
 /*
