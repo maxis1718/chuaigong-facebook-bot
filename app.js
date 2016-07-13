@@ -278,17 +278,7 @@ function gulis(recipientId, message, messageType) {
     var messageData = '';
     var res;
 
-    request.post(uri, {
-        form: {
-            userid: recipientId,
-            message: message || '',
-            platform: 'facebook',
-            type: messageType,
-            user: true
-        }
-    }, function (error, response, body) {
-
-console.log('[gulis] body:', body);
+    if (messageType == 'text' && message.indexOf('踹共') === 0) {
 
         var messageData = {
             recipient :{
@@ -324,17 +314,20 @@ console.log('[gulis] body:', body);
               }
             }
         };
-
         callSendAPI(messageData);
-
-        // extract response
-        /*
-        var beautyBody = JSON.parse(body);
-        if (beautyBody.text) {
-          res = beautyBody.text.split('\n');
-        }*/
-
-        //sendTextMessage(recipientId, '收到');
+    }
+    else {
+        request.post(uri, {
+            form: {
+                userid: recipientId,
+                message: message || '',
+                platform: 'facebook',
+                type: messageType,
+                user: true
+            }
+        }, function (error, response, body) {
+            // do nothing
+        }   
     });
 }
 
