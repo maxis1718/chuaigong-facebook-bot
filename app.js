@@ -294,32 +294,24 @@ function gulis(recipientId, message, messageType) {
                 payload: {
                   template_type: "generic",
                   elements: [{
-                    title: "rift",
-                    subtitle: "Next-generation virtual reality",
-                    item_url: "https://www.oculus.com/en-us/rift/",               
-                    image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+                    title: "統一獅",
+                    subtitle: "中韓職棒熱身賽－警察廳vs統一獅",
+                    item_url: "#",
+                    image_url: "https://i.ytimg.com/vi/pkC6NAvJlCE/hqdefault.jpg",
                     buttons: [{
-                      type: "web_url",
-                      url: "https://www.oculus.com/en-us/rift/",
-                      title: "Open Web URL"
-                    }, {
                       type: "postback",
-                      title: "Call Postback",
-                      payload: "Payload for first bubble",
+                      title: "參上",
+                      payload: "Come on!",
                     }],
                   }, {
-                    title: "touch",
-                    subtitle: "Your Hands, Now in VR",
-                    item_url: "https://www.oculus.com/en-us/touch/",               
-                    image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+                    title: "佼心食堂",
+                    subtitle: "梁家輝、彭于晏",
+                    item_url: "#",
+                    image_url: "https://s.yimg.com/uu/api/res/1.2/VWWR2E0ETGDrq8zIFfo3gw--/Zmk9ZmlsbDtweW9mZj0wO3c9MjM0O2g9MTU0O3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahootwlive.com@0940b788-2c38-3579-9b7d-2f8aca2652c5_FULL.jpg",
                     buttons: [{
-                      type: "web_url",
-                      url: "https://www.oculus.com/en-us/touch/",
-                      title: "Open Web URL"
-                    }, {
                       type: "postback",
-                      title: "Call Postback",
-                      payload: "Payload for second bubble",
+                      title: "參上",
+                      payload: "Come on!"
                     }]
                   }]
                 }
