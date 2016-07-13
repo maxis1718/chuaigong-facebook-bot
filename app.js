@@ -262,7 +262,8 @@ function receivedPostback(event) {
 function gulis(recipientId, messageText) {
 
     // slack monkey Beauty API
-    var uri = 'http://hack.wjhuang.net:6174/beauty';
+    var uri = 'http://hack.wjhuang.net:5566/bot/index';
+
     var messageData = '';
     var res;
 
