@@ -196,16 +196,11 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-    var obj = {
-        recipient: event.recipient
-    };
-    gulis(senderID, messageText, obj);
+    gulis(senderID, messageText, 'text');
   } else if (messageAttachments) {
-    var obj = {
-        attachment: messageAttachments
-    };
-    gulis(senderID, messageText, obj)
+    gulis(senderID, messageAttachments, 'attachments');
   } else {
+    // TODO
   }
 }
 
@@ -271,7 +266,7 @@ function receivedPostback(event) {
   sendTextMessage(senderID, msg);
 }
 
-function gulis(recipientId, messageText, others) {
+function gulis(recipientId, message, messageType) {
 
     // slack monkey Beauty API
     var uri = 'http://hack.wjhuang.net:5566/bot/index';
@@ -282,9 +277,9 @@ function gulis(recipientId, messageText, others) {
     request.post(uri, {
         form: {
             userid: recipientId,
-            text: messageText,
+            message: message || '',
             platform: 'facebook',
-            others: others
+            type: messageType
         }
     }, function (error, response, body) {
 
