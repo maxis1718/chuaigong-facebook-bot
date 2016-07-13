@@ -278,6 +278,9 @@ function gulis(recipientId, message, messageType) {
     var messageData = '';
     var res;
 
+console.log('>> text:', messageType);
+console.log('>> 踹共:', message);
+
     if (messageType == 'text' && message.indexOf('踹共') === 0) {
 
         var messageData = {
@@ -314,6 +317,7 @@ function gulis(recipientId, message, messageType) {
               }
             }
         };
+console.log('>>>>>> send!!!!');
         callSendAPI(messageData);
     }
     else {
