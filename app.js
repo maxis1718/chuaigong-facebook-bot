@@ -283,13 +283,16 @@ function gulis(recipientId, message, messageType) {
         }
     }, function (error, response, body) {
 
+        console.log('[gulis] body:', body);
+
         // extract response
+        /*
         var beautyBody = JSON.parse(body);
         if (beautyBody.text) {
           res = beautyBody.text.split('\n');
-        }
+        }*/
 
-        sendTextMessage(recipientId, res);
+        sendTextMessage(recipientId, '收到');
     });
 }
 
