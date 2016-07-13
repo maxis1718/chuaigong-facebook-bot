@@ -280,7 +280,6 @@ function gulis(recipientId, message, messageType) {
                   elements: [{
                     title: "統一獅",
                     subtitle: "中韓職棒熱身賽－警察廳vs統一獅",
-                    item_url: "https://i.ytimg.com/vi/pkC6NAvJlCE/hqdefault.jpg",
                     image_url: "https://i.ytimg.com/vi/pkC6NAvJlCE/hqdefault.jpg",
                     buttons: [{
                       type: "postback",
@@ -290,7 +289,6 @@ function gulis(recipientId, message, messageType) {
                   }, {
                     title: "佼心食堂",
                     subtitle: "梁家輝、彭于晏",
-                    item_url: "https://i.ytimg.com/vi/pkC6NAvJlCE/hqdefault.jpg",
                     image_url: "https://s.yimg.com/uu/api/res/1.2/VWWR2E0ETGDrq8zIFfo3gw--/Zmk9ZmlsbDtweW9mZj0wO3c9MjM0O2g9MTU0O3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahootwlive.com@0940b788-2c38-3579-9b7d-2f8aca2652c5_FULL.jpg",
                     buttons: [{
                       type: "postback",
