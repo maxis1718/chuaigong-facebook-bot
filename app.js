@@ -261,8 +261,6 @@ function receivedPostback(event) {
 
 function gulis(recipientId, messageText) {
 
-console.log('>>> recipientId:', recipientId);
-
     // slack monkey Beauty API
     var uri = 'http://hack.wjhuang.net:6174/beauty';
     var messageData = '';
@@ -270,7 +268,7 @@ console.log('>>> recipientId:', recipientId);
 
     request.post(uri, {
         form: {
-            user_name: 'fbbot',
+            user_name: recipientId,
             text: messageText,
             platform: 'facebook'
         }
