@@ -255,7 +255,7 @@ function receivedPostback(event) {
   // let them know it was successful
   var msg = msgs[Math.floor(Math.random() * msgs.length)];
 
-  sendTextMessage(senderID, msg);
+  sendTextMessage(senderID, '已加入 ' + payload + '，' + msg);
 }
 
 function gulis(recipientId, message, messageType) {
@@ -285,7 +285,7 @@ function gulis(recipientId, message, messageType) {
                         buttons: [{
                           type: "postback",
                           title: "參上",
-                          payload: "Come on!",
+                          payload: "#統一獅",
                         }]
                     },
                     {
@@ -295,7 +295,7 @@ function gulis(recipientId, message, messageType) {
                         buttons: [{
                           type: "postback",
                           title: "參上",
-                          payload: "Come on!"
+                          payload: "#佼心食堂"
                         }]
                     },
                     {
@@ -305,17 +305,17 @@ function gulis(recipientId, message, messageType) {
                         buttons: [{
                           type: "postback",
                           title: "參上",
-                          payload: "Come on!"
+                          payload: "#唐立淇測風向"
                         }]
                     },
                     {
-                        title: "Yahoo影音名人堂",
+                        title: "影音名人堂",
                         subtitle: "【雞排炸新聞】相親後被要求卸妝給對方看",
                         image_url: "https://s.yimg.com/uu/api/res/1.2/MP8vyb9sINNRuYQNmdy6nA--/Zmk9ZmlsbDtweW9mZj0wO3c9MTQ2O2g9ODI7c209MTthcHBpZD15dGFjaHlvbg--/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahooscreen.com@2112bd55-c1ae-35b8-bfaa-816a6381f917_FULL.png",
                         buttons: [{
                           type: "postback",
                           title: "參上",
-                          payload: "Come on!"
+                          payload: "#影音名人堂"
                         }]
                     }]
                 }
