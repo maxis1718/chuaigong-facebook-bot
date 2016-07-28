@@ -258,87 +258,6 @@ function receivedPostback(event) {
   sendTextMessage(senderID, '已加入 ' + payload + '，' + msg);
 }
 
-function gulis(recipientId, message, messageType) {
-
-    // slack monkey Beauty API
-    var uri = 'http://hack.wjhuang.net:3000/bot/index';
-
-    var messageData = '';
-    var res;
-
-    if (messageType == 'text' && message.indexOf('踹共') === 0) {
-
-        var messageData = {
-            recipient :{
-                id: recipientId
-            },
-            message: {
-              attachment: {
-                type: "template",
-                payload: {
-                  template_type: "generic",
-                  elements: [
-                    {
-                        title: "統一獅",
-                        subtitle: "中韓職棒熱身賽－警察廳vs統一獅",
-                        image_url: "https://i.ytimg.com/vi/pkC6NAvJlCE/hqdefault.jpg",
-                        buttons: [{
-                          type: "postback",
-                          title: "參上",
-                          payload: "#統一獅",
-                        }]
-                    },
-                    {
-                        title: "佼心食堂",
-                        subtitle: "梁家輝、彭于晏",
-                        image_url: "https://s.yimg.com/uu/api/res/1.2/VWWR2E0ETGDrq8zIFfo3gw--/Zmk9ZmlsbDtweW9mZj0wO3c9MjM0O2g9MTU0O3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahootwlive.com@0940b788-2c38-3579-9b7d-2f8aca2652c5_FULL.jpg",
-                        buttons: [{
-                          type: "postback",
-                          title: "參上",
-                          payload: "#佼心食堂"
-                        }]
-                    },
-                    {
-                        title: "唐立淇測風向",
-                        subtitle: "勞工問題效應，還會持續至何時？",
-                        image_url: "https://s.yimg.com/uu/api/res/1.2/fuJ1wSLEroKuuFzAm1LyQQ--/Zmk9ZmlsbDtweW9mZj0wO3c9MTQ2O2g9ODI7c209MTthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/creatr-images/GLB/2016-06-27/444747c0-3c93-11e6-a7e7-ed25d9b81d27_snaps-5-about-on-yahoo-legacy_it.jpg",
-                        buttons: [{
-                          type: "postback",
-                          title: "參上",
-                          payload: "#唐立淇測風向"
-                        }]
-                    },
-                    {
-                        title: "影音名人堂",
-                        subtitle: "【雞排炸新聞】相親後被要求卸妝給對方看",
-                        image_url: "https://s.yimg.com/uu/api/res/1.2/MP8vyb9sINNRuYQNmdy6nA--/Zmk9ZmlsbDtweW9mZj0wO3c9MTQ2O2g9ODI7c209MTthcHBpZD15dGFjaHlvbg--/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahooscreen.com@2112bd55-c1ae-35b8-bfaa-816a6381f917_FULL.png",
-                        buttons: [{
-                          type: "postback",
-                          title: "參上",
-                          payload: "#影音名人堂"
-                        }]
-                    }]
-                }
-            }
-            }
-        };
-        callSendAPI(messageData);
-    }
-    else {
-        request.post(uri, {
-            form: {
-                userid: recipientId,
-                message: message || '',
-                platform: 'facebook',
-                type: messageType,
-                user: true
-            }
-        }, function (error, response, body) {
-            // do nothing
-        });
-    };
-}
-
 /*
  * Send a text message using the Send API.
  *
@@ -382,6 +301,88 @@ function callSendAPI(messageData) {
       // console.error(error);
     }
   });  
+}
+
+var carousel = [
+  {
+      title: "統一獅",
+      subtitle: "中韓職棒熱身賽－警察廳vs統一獅",
+      image_url: "https://i.ytimg.com/vi/pkC6NAvJlCE/hqdefault.jpg",
+      buttons: [{
+        type: "postback",
+        title: "參上",
+        payload: "#統一獅",
+      }]
+  },
+  {
+      title: "佼心食堂",
+      subtitle: "梁家輝、彭于晏",
+      image_url: "https://s.yimg.com/uu/api/res/1.2/VWWR2E0ETGDrq8zIFfo3gw--/Zmk9ZmlsbDtweW9mZj0wO3c9MjM0O2g9MTU0O3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahootwlive.com@0940b788-2c38-3579-9b7d-2f8aca2652c5_FULL.jpg",
+      buttons: [{
+        type: "postback",
+        title: "參上",
+        payload: "#佼心食堂"
+      }]
+  },
+  {
+      title: "唐立淇測風向",
+      subtitle: "勞工問題效應，還會持續至何時？",
+      image_url: "https://s.yimg.com/uu/api/res/1.2/fuJ1wSLEroKuuFzAm1LyQQ--/Zmk9ZmlsbDtweW9mZj0wO3c9MTQ2O2g9ODI7c209MTthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/creatr-images/GLB/2016-06-27/444747c0-3c93-11e6-a7e7-ed25d9b81d27_snaps-5-about-on-yahoo-legacy_it.jpg",
+      buttons: [{
+        type: "postback",
+        title: "參上",
+        payload: "#唐立淇測風向"
+      }]
+  },
+  {
+      title: "影音名人堂",
+      subtitle: "【雞排炸新聞】相親後被要求卸妝給對方看",
+      image_url: "https://s.yimg.com/uu/api/res/1.2/MP8vyb9sINNRuYQNmdy6nA--/Zmk9ZmlsbDtweW9mZj0wO3c9MTQ2O2g9ODI7c209MTthcHBpZD15dGFjaHlvbg--/http://media.zenfs.com/en-US/video/video.pd2upload.com/video.yahooscreen.com@2112bd55-c1ae-35b8-bfaa-816a6381f917_FULL.png",
+      buttons: [{
+        type: "postback",
+        title: "參上",
+        payload: "#影音名人堂"
+      }]
+  }
+];
+
+function gulis(recipientId, message, messageType) {
+
+  var uri = 'http://hack.wjhuang.net:3000/bot/index';
+  var messageData;
+
+  if (messageType == 'text' && message.indexOf('踹共') === 0) {
+
+    messageData = {
+      recipient :{
+          id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: carousel
+          }
+        }
+      }
+    };
+
+    callSendAPI(messageData);
+  }
+  else {
+      request.post(uri, {
+          form: {
+              userid: recipientId,
+              message: message || '',
+              platform: 'facebook',
+              type: messageType,
+              user: true
+          }
+      }, function (error, response, body) {
+          // do nothing
+      });
+  };
 }
 
 // Start server
